@@ -80,11 +80,11 @@ skills/
 
 1. Create a folder named after the skill, such as `my-skill`.
 2. Add a `SKILL.md` file that starts with front matter, a metadata block between `---` lines:
-   - `name`: the same as the folder name.
-   - `description`: when the skill applies, including trigger phrases.
-   - `argument-hint` (optional): a short hint about the expected input.
+	- `name`: the same as the folder name.
+	- `description`: when the skill applies, including trigger phrases.
+	- `argument-hint` (optional): a short hint about the expected input.
 3. Write the rules and procedure in Markdown. Follow `instruction-files.instructions.md` in `%USERPROFILE%\.copilot\instructions`.
 
 ## Licence
 
-No licence is specified for this collection.
+This collection is licensed under [Creative Commons Zero v1.0 Universal (CC0 1.0)](https://creativecommons.org/publicdomain/zero/1.0/). Its author has dedicated the work to the public domain, so you can copy, modify, distribute, and use it, even for commercial purposes, without asking permission.
