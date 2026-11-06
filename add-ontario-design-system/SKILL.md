@@ -41,7 +41,7 @@ Use read-only file tools to find the following, and ask the user about anything 
 
 ### 3. Ask the user
 
-Ask in one grouped request, using the agent's question tool when one is available, which extras to add. Explain that ODS is mandatory only for public-facing Government of Ontario services, that it requires the ODS favicon on every Government of Ontario website and application and at least the simple footer on every Ontario application, and that the application header is for applications outside the main ontario.ca website. For each chosen extra, also ask for the following:
+Ask in one grouped request, using the agent's question tool when one is available, which extras to add. Explain that the Government of Ontario Information Technology Standard (GO-ITS) 100PRD Government of Ontario Web Standard requires ODS for every public-facing digital service delivered by an Ontario ministry, or by a provincial agency whose services are integrated with ontario.ca, including procured commercial off-the-shelf software and software-as-a-service products, and that it does not require ODS for internal-facing websites or for agencies whose services are not integrated with ontario.ca. Also explain that ODS requires the ODS favicon on every Government of Ontario website and application and at least the simple footer on every Ontario application, and that the application header is for applications outside the main ontario.ca website. For each chosen extra, also ask for the following:
 
 - **ODS favicon set:** If the app has no web app manifest, the app name and description for the ODS `manifest.json` file.
 - **Simple footer:** The "Contact us" link.
