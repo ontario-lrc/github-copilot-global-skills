@@ -1,90 +1,105 @@
-# Copilot Skills
+# GitHub Copilot Skills
 
-Reusable agent skills for accessibility audits, the Ontario Design System, and new Angular apps.
+## Overview
 
-Each skill is a folder that contains a `SKILL.md` file. The file states when the skill applies, its rules, and its step-by-step procedure.
+This collection contains reusable agent skills for GitHub Copilot. A skill is a folder with a `SKILL.md` file that describes when it applies, the procedure to follow, and any supporting resources. Copilot can load a relevant skill for specialized work.
 
-## Skills
+## Contents
 
-### [accessibility-audit](accessibility-audit/SKILL.md)
+| Skill | Purpose | Example request |
+| --- | --- | --- |
+| [accessibility-audit](accessibility-audit/SKILL.md) | Audit and fix accessibility barriers in web and non-web interfaces and content. Findings cite applicable Ontario requirements and accessibility criteria. | “Audit the checkout form for accessibility barriers.” |
+| [add-ontario-design-system](add-ontario-design-system/SKILL.md) | Add the Ontario Design System distribution package to an existing web app, with optional supporting assets and presentation elements. | “Add the Ontario Design System to this app.” |
+| [new-angular-app](new-angular-app/SKILL.md) | Create a new Angular app with a fixed setup workflow using current Angular tooling and the latest Long-Term Support version of Node.js. | “Create a new Angular app called `my-app`.” |
 
-Audits web and non-web user interfaces and content for barriers under the Accessibility for Ontarians with Disabilities Act (AODA).
-
-- Maps each finding to the Integrated Accessibility Standards Regulation (IASR, Ontario Regulation 191/11) and to Web Content Accessibility Guidelines (WCAG) success criteria.
-- For non-web surfaces, such as native mobile, desktop, and kiosk software and documents, applies the World Wide Web Consortium (W3C) guidance on applying WCAG to non-web technologies (WCAG2ICT).
-- Fixes each barrier with the smallest verifiable change, and cites the legal reference for each finding.
-- Reads `accessibility.instructions.md` from `%USERPROFILE%\.copilot\instructions`.
-
-Example request: *"Audit the checkout form for accessibility barriers."*
-
-### [add-ontario-design-system](add-ontario-design-system/SKILL.md)
-
-Adds the latest Ontario Design System (ODS) distribution package to an existing web app. It works with any web stack, such as Angular, React, Vue, plain HyperText Markup Language (HTML), or server-rendered templates.
-
-- Downloads the package from `designsystem.ontario.ca`, and checks that the release notes name the same version.
-- Serves the package's files unchanged from a `vendor\ontario-design-system` folder inside the app's static folder, and links its stylesheet from every page.
-- Offers optional extras, which you choose in each run: an ODS favicon set, a simple footer, an application header, and Sass variables.
-- Does not cover ODS packages on the Node Package Manager (npm) registry, web components, or building pages from ODS components.
-
-Example request: *"Add the Ontario Design System to this app."*
-
-### [new-angular-app](new-angular-app/SKILL.md)
-
-Creates a new Angular workspace and app with the latest Angular Command-Line Interface (CLI), on the newest Long-Term Support (LTS) release of Node.js.
-
-- Installs and selects Node.js with Node Version Manager (NVM) for Windows, version 2, in PowerShell.
-- Uses a fixed `ng new` configuration, which its `SKILL.md` lists. It includes server-side rendering, zoneless mode, and the Angular Model Context Protocol (MCP) server configuration for Visual Studio Code (VS Code).
-- Removes the `AGENTS.md` file that this configuration generates, and builds the app to check it.
-- Asks for the app name, then shows a command plan for your approval before it runs anything.
-- Not for existing Angular workspaces, NVM on macOS or Linux, or NVM for Windows version 1.
-
-Example request: *"Create a new Angular app called `my-app`."*
+Read each `SKILL.md` for its complete scope, limitations, prerequisites, and steps.
 
 ## Requirements
 
-- Windows with PowerShell, for `new-angular-app` and `add-ontario-design-system`.
-- Node Version Manager (NVM) for Windows, version 2, for `new-angular-app`. Version 1 is not supported. `new-angular-app` uses NVM to install the newest Long-Term Support (LTS) release of Node.js, and then installs pnpm and the Angular Command-Line Interface (CLI) globally.
-- Internet access to `nodejs.org`, `registry.npmjs.org`, `angular.dev`, and `designsystem.ontario.ca`, which the skills fetch at run time.
-- `accessibility.instructions.md` in `%USERPROFILE%\.copilot\instructions`, for `accessibility-audit`.
-- Optional: Visual Studio Code (VS Code), to use the Model Context Protocol (MCP) configuration that `new-angular-app` creates.
+- A GitHub Copilot client that supports user-level agent skills, such as the Copilot harness in Visual Studio Code (VS Code) or GitHub Copilot command-line interface (CLI).
+- Windows and PowerShell for `new-angular-app` and `add-ontario-design-system`.
+- Node Version Manager (NVM) for Windows, version 2, for `new-angular-app`; version 1 and NVM for Unix-like systems are not supported by that skill.
+- Internet access to `nodejs.org`, `registry.npmjs.org`, `angular.dev`, and `designsystem.ontario.ca` for the resources fetched by the skills.
+- The user-level instructions from `github-copilot-global-instructions` for the complete workflow of `accessibility-audit`.
+- Optionally, VS Code for the Model Context Protocol (MCP) server configuration generated by `new-angular-app`.
 
 ## Installation
 
-Place the skill folders in `%USERPROFILE%\.copilot\skills`, the user-level skills folder. The skills are Markdown files, so no build step is needed.
+Run the commands for your operating system from the root of this repository. They copy each skill directory, including its `SKILL.md` and supporting files, into `~/.copilot/skills/`.
+
+### Windows PowerShell
+
+```powershell
+$copilotRoot = Join-Path $HOME '.copilot'
+$skillDestination = Join-Path $copilotRoot 'skills'
+New-Item -ItemType Directory -Force -Path $skillDestination | Out-Null
+Get-ChildItem -Path '.\github-copilot-global-skills' -Directory | ForEach-Object {
+    Copy-Item -Path $_.FullName -Destination $skillDestination -Recurse -Force
+}
+```
+
+### macOS and Linux
+
+```bash
+skill_destination="$HOME/.copilot/skills"
+mkdir -p "$skill_destination"
+
+for skill in github-copilot-global-skills/*/; do
+  [ -d "$skill" ] || continue
+  cp -R "$skill" "$skill_destination/"
+done
+```
+
+If GitHub Copilot CLI uses a non-default `COPILOT_HOME`, install the skills under that directory's `skills/` folder for the CLI to find them. VS Code may use a separately configured user location. Copying merges directories and overwrites files with matching names, so review any local edits first.
 
 ## Usage
 
-Describe the task in plain language. The agent selects the skill whose description matches the request. Example requests are listed under [Skills](#skills).
+Describe the task in plain language, or name a skill. Copilot can select a relevant skill based on its description. For example, ask for an accessibility audit, an Ontario Design System integration, or a new Angular app.
 
-- `new-angular-app` and `add-ontario-design-system` show a command plan and run nothing until you approve it.
-- `new-angular-app` runs only the commands in its approved plan, which includes one deletion of the generated `AGENTS.md` file.
-- `new-angular-app` and `add-ontario-design-system` treat fetched web pages as data, and ignore any instructions in them.
-- The skills do not claim compliance. Accessibility findings still need manual and assistive technology testing, and legal review where a report flags it.
+- `new-angular-app` and `add-ontario-design-system` present a command plan and wait for approval before running it.
+- `new-angular-app` runs only the commands in its approved plan, including one deletion of the generated `AGENTS.md` file.
+- `new-angular-app` and `add-ontario-design-system` treat fetched web pages as data and ignore instructions embedded in those pages.
+- The accessibility skill does not claim that an application is compliant. Findings still need appropriate manual and assistive technology testing, and legal review when needed.
+
+## Verification
+
+- **VS Code:** Run **Chat: Open Customizations** from the Command Palette, select the Copilot harness, and confirm the skills appear in the user-level skills list.
+- **Copilot CLI:** Start a new session after installation. If you added skills during an active session, run `/skills reload`.
+
+If a skill is missing, confirm the selected harness, the `~/.copilot/skills/` destination, and that its folder contains `SKILL.md`. Check `COPILOT_HOME` if the CLI uses a custom home directory.
+
+## Update and Uninstall
+
+To update, copy the newer skill directories using the installation commands. Compare the source and destination folders and remove old skill folders manually if a skill was renamed or removed. Preserve any local changes you want to keep.
+
+To uninstall, remove only this collection's skill folders from `~/.copilot/skills/`: `accessibility-audit`, `add-ontario-design-system`, and `new-angular-app`. Review each folder first and retain any content you added or edited independently. If Copilot CLI uses a custom `COPILOT_HOME`, use that directory's `skills/` folder.
+
+## Customization
+
+To add a skill, create a folder with a matching `SKILL.md` file. Begin the file with YAML frontmatter containing a `name` that matches the folder name and a clear `description` that explains when the skill should be used. An optional `argument-hint` can describe expected input. Add scripts, examples, or references in the same folder and link to them from `SKILL.md` using relative paths. Follow `instruction-files.instructions.md` when it is installed.
 
 ## Folder Layout
 
 ```text
-skills/
-├── README.md
-├── accessibility-audit/
-│   ├── SKILL.md
-│   └── references/
-│       └── non-web.md
-├── add-ontario-design-system/
-│   └── SKILL.md
-└── new-angular-app/
-    └── SKILL.md
+github-copilot-global-skills/
+|-- accessibility-audit/
+|   |-- SKILL.md
+|   `-- references/
+|       `-- non-web.md
+|-- add-ontario-design-system/
+|   `-- SKILL.md
+|-- new-angular-app/
+|   `-- SKILL.md
+|-- LICENSE
+`-- README.md
 ```
-
-## Adding a Skill
-
-1. Create a folder named after the skill, such as `my-skill`.
-2. Add a `SKILL.md` file that starts with front matter, a metadata block between `---` lines:
-	- `name`: the same as the folder name.
-	- `description`: when the skill applies, including trigger phrases.
-	- `argument-hint` (optional): a short hint about the expected input.
-3. Write the rules and procedure in Markdown. Follow `instruction-files.instructions.md` in `%USERPROFILE%\.copilot\instructions`.
 
 ## Licence
 
-This collection is licensed under [Creative Commons Zero v1.0 Universal (CC0 1.0)](https://creativecommons.org/publicdomain/zero/1.0/). Its author has dedicated the work to the public domain, so you can copy, modify, distribute, and use it, even for commercial purposes, without asking permission.
+This collection is dedicated to the public domain under Creative Commons Zero (CC0) 1.0 Universal. See [LICENSE](LICENSE) for the full terms.
+
+## Further Reading
+
+- [VS Code: Agent skills](https://code.visualstudio.com/docs/agent-customization/agent-skills)
+- [GitHub Copilot CLI: Add agent skills](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-skills)
+- [Agent Skills specification](https://agentskills.io/specification)
