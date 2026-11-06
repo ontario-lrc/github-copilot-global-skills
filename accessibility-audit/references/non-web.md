@@ -6,6 +6,7 @@ Read this file in step 3 of the procedure in `SKILL.md` when the surface is non-
 
 - Do not apply IASR section 14 directly to non-web user interfaces, such as native mobile, desktop, and kiosk software and documents, because it is written for internet websites and web content, including web-based applications. Use these AODA hooks instead: IASR section 6 (self-service kiosks), section 12 (accessible formats and communication supports), the Customer Service standard (IASR Part IV.2, sections 80.45 to 80.51), and the Human Rights Code duty to accommodate.
 - Under IASR section 6, obligated organizations must incorporate, or have regard to, accessibility when designing, procuring, or acquiring self-service kiosks: interactive electronic terminals for public use, such as point-of-sale devices, ticketing and self-check-in terminals, and automated teller machines.
+- For an Ontario ministry's mobile application, or a document that is web content, also apply the Ontario Public Service (OPS) Digital Accessibility Standard (ODAS) as `accessibility.instructions.md` describes. It requires WCAG 2.1 Level A and AA and lists WCAG2ICT as an informative reference for applying them; cite it in the "ODAS basis" field.
 
 ## Scope Checks
 
