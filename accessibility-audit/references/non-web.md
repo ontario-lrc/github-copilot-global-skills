@@ -1,29 +1,31 @@
-# Non-Web User Interfaces
+# Non-Web User Interfaces and Documents
 
-Read this file in step 3 of the procedure in `SKILL.md` when the surface is non-web: native mobile, desktop, or kiosk software, or a document. It uses these abbreviations from `SKILL.md`: Accessibility for Ontarians with Disabilities Act (AODA), Integrated Accessibility Standards Regulation (IASR), Web Content Accessibility Guidelines (WCAG), and the World Wide Web Consortium guidance on applying WCAG to non-web information and communications technologies (WCAG2ICT).
+Use this reference for native mobile, desktop, kiosk, embedded software, and document deliverables. Establish the applicable jurisdiction and organisational scope before making a legal finding. Accessibility remains a mandatory engineering requirement even when a particular statutory provision does not apply.
 
-## Legal Hooks
+## Legal hooks
 
-- Do not apply IASR section 14 directly to non-web user interfaces, such as native mobile, desktop, and kiosk software and documents, because it is written for internet websites and web content, including web-based applications. Use these AODA hooks instead: IASR section 6 (self-service kiosks), section 12 (accessible formats and communication supports), the Customer Service standard (IASR Part IV.2, sections 80.45 to 80.51), and the Human Rights Code duty to accommodate.
-- Under IASR section 6, obligated organizations must incorporate, or have regard to, accessibility when designing, procuring, or acquiring self-service kiosks: interactive electronic terminals for public use, such as point-of-sale devices, ticketing and self-check-in terminals, and automated teller machines.
-- For an Ontario ministry's mobile application, or a document that is web content, also apply the Ontario Public Service (OPS) Digital Accessibility Standard (ODAS) as `accessibility.instructions.md` describes. It requires WCAG 2.1 Level A and AA and lists WCAG2ICT as an informative reference for applying them; cite it in the "ODAS basis" field.
+- Do not apply IASR section 14 directly to native mobile, desktop, or kiosk software solely because it is a digital product. Section 14 addresses internet websites and web content, including web-based applications. Determine whether a document is legally treated as web content in its publication context rather than assuming that every document is covered by section 14.
+- IASR section 6 may apply to obligated organisations when designing, procuring, or acquiring self-service kiosks. Verify that the device meets the statutory definition and that the organisation is within scope.
+- IASR section 12 may require obligated organisations to provide accessible formats and communication supports upon request, subject to its terms and exceptions. Do not infer that section 12 establishes a blanket WCAG conformance obligation for every internal document or application.
+- The Customer Service Standard (IASR Part IV.2, sections 80.45 to 80.51) and the Human Rights Code duty to accommodate may be relevant to the service, interaction, or accommodation request. Determine the specific duty and applicability before citing it.
+- If a native application or document is also delivered as web content, assess the web publication and control context separately. Do not assume that the same legal hook applies to every delivery surface.
+- Apply the Ontario Public Service (OPS) Digital Accessibility Standard (ODAS) only to products and content that fall within the standard's current scope. The standard is an OPS policy requirement, not legislation. Verify current coverage for mobile applications, documents, web applications, and web content before citing it.
 
-## Scope Checks
+## Technical interpretation and scope checks
 
-Apply these checks in step 4, together with "Scope and Defences" in `SKILL.md`.
+- WCAG was written for web content. Use WCAG2ICT as an interpretation aid when applying relevant WCAG success criteria to non-web information and communications technology. Do not assume every web criterion applies unchanged to every format.
+- Consider the applicable platform accessibility APIs and conventions for native applications, including accessible names, roles, states, keyboard or switch navigation, screen-reader output, focus behaviour, text scaling, and system accessibility settings.
+- For documents, consider semantic structure, tagging, reading order, headings, links, table headers, language metadata, and text alternatives in the actual exported format.
+- Some success criteria may be not applicable or may require adaptation in non-web contexts. Document the technical reason and the applicable interpretation source. Do not mark criteria as not applicable merely because they are inconvenient to test.
+- For closed-functionality devices, such as certain kiosks and automated teller machines, where assistive technology cannot be attached, determine the equivalent built-in facilitation required by the applicable standard. WCAG does not assess hardware accessibility by itself.
 
-- **Non-web success criteria (WCAG2ICT):** WCAG was written for the web, so WCAG2ICT, the European standard EN 301 549, and the United States Section 508 standards commonly treat some success criteria as not applicable to non-web software, such as 2.4.1 Bypass Blocks, 2.4.5 Multiple Ways, 3.2.3 Consistent Navigation, and 3.2.4 Consistent Identification, plus 2.4.2 Page Titled and 3.1.2 Language of Parts. For closed-functionality devices, such as kiosks and automated teller machines, where assistive technology cannot attach, equivalent built-in facilitation, such as self-voicing or tactile output, is required. WCAG does not apply to hardware aspects.
+## Citation guidance
 
-## Citation Example (Kiosk)
+Use the legal citation template in `SKILL.md`. Cite only the specific statutory provision that applies to the organisation and surface. Where an issue is based on WCAG2ICT, a platform standard, ODAS, a contract, or an organisational policy, identify that basis separately and do not mislabel it as an AODA statutory requirement.
 
-This example follows "Citation Template" in `SKILL.md` and its abbreviations: O. Reg. (Ontario Regulation), S.O. (Statutes of Ontario), c. (chapter), s. (section), and SC (success criterion).
+## Sources
 
-- Regulation: O. Reg. 191/11 (IASR) under AODA, S.O. 2005, c.11
-- Section: s.6
-- Subsection/Clause: (1)
-- Surface: Non-web (kiosk/embedded)
-- Obligation summary: Accessibility must be incorporated when designing, procuring, or acquiring self-service kiosks.
-- Exception or limit: Closed functionality may prevent assistive-technology attachment; equivalent built-in facilitation, such as self-voicing, may be required; hardware aspects are out of WCAG scope.
-- Standards basis: WCAG 2.0 SC 1.4.3 - Contrast (Minimum) at Level AA as interpreted by WCAG2ICT, under IASR s.6 and the Human Rights Code duty to accommodate.
-- Citation confidence: Medium
-- Legal review flag: Required
+- AODA and IASR: https://www.ontario.ca/laws/regulation/110191
+- Ontario accessibility guidance: https://www.ontario.ca/page/how-make-websites-accessible
+- WCAG2ICT: https://www.w3.org/TR/wcag2ict/
+- ODAS (GO-ITS 201PRS), for authorised OPS users: https://intra.ontario.ca/tbs/ops-digital-accessibility-standard-odas-html-version
