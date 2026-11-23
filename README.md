@@ -18,10 +18,10 @@ Each skill has a folder whose name matches the `name` in the `SKILL.md` frontmat
 |---|---|
 | `delegation-and-handoff` | Define bounded specialist assignments and coordinate hand-offs. |
 | `structured-reporting` | Produce concise, evidence-based reports. |
+| `technical-research` | Research and verify external technical information and return a concise evidence brief. |
 | `repository-investigation` | Inspect and explain an existing repository. |
 | `requirements-analysis` | Elicit, specify, and validate requirements. |
 | `architecture-design` | Develop architecture and technical design decisions. |
-| `technical-research` | Research and verify external technical information and prepare evidence-based hand-offs. |
 | `implementation-workflow` | Implement, debug, and refactor approved changes. |
 | `software-testing` | Plan, design, and execute risk-based tests. |
 | `code-review` | Review code changes read-only. |
@@ -32,9 +32,9 @@ Each skill has a folder whose name matches the `name` in the `SKILL.md` frontmat
 
 | Skill | Responsibility |
 |---|---|
-| `accessibility-audit` | Apply mandatory accessibility assurance, audits, legal-scope analysis, and format-specific verification. |
+| `accessibility-audit` | Assess accessibility, applicable Ontario requirements, and remediation options. |
 | `add-ontario-design-system` | Integrate or upgrade the ODS distribution package in an existing web application. |
-| `new-angular-app` | Create a new Angular application using the defined Windows and PowerShell project workflow. |
+| `new-angular-app` | Create a new Angular application using the defined project workflow. |
 
 ## Agent-to-skill mapping
 
@@ -51,7 +51,7 @@ Each skill has a folder whose name matches the `name` in the `SKILL.md` frontmat
 | `32 - Security Reviewer` | `security-assessment` |
 | `40 - Technical Documentation Specialist` | `documentation-release` |
 
-Domain-specific skills remain independently discoverable or can be invoked explicitly when relevant. They are not preloaded into every agent. The accessibility requirement itself is established by the global and scoped instructions and by each responsible agent's role; it does not depend on loading the accessibility skill.
+Domain-specific skills remain independently discoverable or can be invoked explicitly when relevant. They are not preloaded into every agent.
 
 ## Installation
 
@@ -77,7 +77,7 @@ Review local changes before overwriting a skill with the same name. Do not copy 
 
 ## Maintenance
 
-Keep descriptions distinctive and concise. Avoid duplicating global instructions or restating a bound skill inside an agent. Split a skill only when it contains genuinely independent workflows with different triggers or authority boundaries. Keep research and audit outputs concise so that only material evidence and findings are passed between agents.
+Keep descriptions distinctive and concise. Avoid duplicating global instructions or restating a bound skill inside an agent. Split a skill only when it contains genuinely independent workflows with different triggers or authority boundaries.
 
 ## Companion repositories
 
